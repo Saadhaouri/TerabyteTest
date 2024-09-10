@@ -17,11 +17,12 @@ function App() {
 
         <div>
 
-          {/* <DataTable /> */}
+
 
 
           <DynamicTable />
         </div>
+
 
 
       </QueryClientProvider>
