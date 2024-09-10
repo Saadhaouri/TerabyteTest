@@ -112,13 +112,32 @@ function DynamicTable() {
                         />
                     </div>
                 ))}
+                <div className="flex-1 p-2 border text-center border-sky-600 rounded bg-gray-50">
+                    <Typography variant="h6" className="mb-2">verdi</Typography>
+                    <TextField
+                        className="bg-slate-70"
+
+
+                        variant="outlined"
+                        size="small"
+
+                        fullWidth
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="end">
+                                    <SearchIcon />
+                                </InputAdornment>
+                            ),
+                        }}
+                    />
+                </div>
             </div>
 
             {/* Data display cards */}
             <div className="flex flex-col p-4 space-y-4">
                 {filteredData?.map((item) => (
                     <div key={item.id} className="flex flex-row">
-                        <Card className="shadow-lg border flex flex-col p-4 mb-4">
+                        <Card className="shadow-lg border flex flex-col p-4 ">
                             <div className="flex items-center justify-between mb-4">
                                 <h6 className="text-lg font-bold text-gray-800 truncate w-36">
                                     {item.name.length > 14 ? `${item.name.slice(0, 14)}...` : item.name}
@@ -144,10 +163,11 @@ function DynamicTable() {
                         </Card>
                         {/* Render nodes for each item */}
                         {item.nodes && (
-                            <Card className="mt-2  border p-4">
+                            <Card className="p-2 w-56 ">
                                 {renderNodes(item.nodes, expandedNodeId, handleNodeToggle)}
                             </Card>
                         )}
+
 
                     </div>
 
