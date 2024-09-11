@@ -116,9 +116,18 @@ function DynamicTable() {
 
         return Array.from(secondColumnSet); // Convert the Set to an array
     };
+    console.log("Area", viewData.data[0].name)
+    console.log("Organisation", viewData.data[0].nodes[1].id)
+    console.log("Organisation(t)", viewData.data[0].nodes[0].secondColumn)
+    console.log("Departement", viewData.data[0].nodes[0].value)
+    console.log("Departement(t)", viewData.data[0].nodes[0].nodes[0].secondColumn)
+    console.log("Departement(t)", viewData.data[0].nodes[0].nodes[0].nodes[0].value)
+
 
     const nodes = viewData?.data?.[0]?.nodes || [];
+
     const secondColumnValues = getParentSecondColumnValues(viewData?.data || []);
+
 
     return (
         <div className="flex flex-col space-y-4">
@@ -129,7 +138,7 @@ function DynamicTable() {
                 </div>
                 {viewData?.headers.map((header) => (
                     <div key={header.accessorKey} className="flex-1 p-2 border text-center border-sky-600 rounded bg-gray-50">
-                        <Typography variant="h6" className="mb-2">{header.name}</Typography>
+                        <Typography variant="h6" className="mb-2">{header}</Typography>
                         <TextField
                             className="bg-slate-70"
                             value={filters[header.accessorKey] || ""}
@@ -138,6 +147,7 @@ function DynamicTable() {
                             size="small"
                             placeholder={`Filter ${header.name}`}
                             fullWidth
+                            edg="end"
                             InputProps={{
                                 startAdornment: (
                                     <InputAdornment position="end">
@@ -148,6 +158,7 @@ function DynamicTable() {
                         />
                     </div>
                 ))}
+
                 <div className="flex-1 p-2 border text-center rounded bg-gray-50">
                     <Typography variant="h6" className="mb-2">Verdi</Typography>
                     <TextField
@@ -170,7 +181,7 @@ function DynamicTable() {
             <div className="flex flex-col p-4 space-y-4">
                 {filteredData?.map((item) => (
                     <div key={item.id} className="flex flex-row space-x-4">
-                        <Card className="shadow-lg border flex flex-col p-4 w-64">
+                        <Card className="shadow-lg border flex flex-col p-4 w-54">
                             <div className="flex items-center justify-between mb-4">
                                 <h6 className="text-lg font-bold text-gray-800 truncate">{item.name.length > 14 ? `${item.name.slice(0, 14)}...` : item.name}</h6>
                                 <MoreVertIcon fontSize='small' className="text-gray-500 cursor-pointer hover:text-gray-700 transition-colors duration-200" />

@@ -21,6 +21,9 @@ function App() {
 
 
           <DynamicTable />
+
+
+          {/* <DTable /> */}
         </div>
 
 

@@ -1,4 +1,4 @@
-import { Card, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 
 function DataCards({ data }) {
     return (
